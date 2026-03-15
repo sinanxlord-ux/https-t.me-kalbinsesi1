@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalbin Sesi - Dini Paylaşımlar</title>
+    <meta name="description" content="Kalbin Sesi Telegram kanalı - Günlük dini paylaşımlar, dualar ve sureler">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            min-height: 100vh;
+            background: linear-gradient(145deg, #1a2f1a 0%, #2d4a2d 100%);
+            font-family: 'Segoe UI', Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+        }
+        
+        /* Dini desen (sehpa) */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle at 20% 30%, rgba(255,215,0,0.05) 8px, transparent 8px),
+                              radial-gradient(circle at 80% 70%, rgba(255,215,0,0.05) 12px, transparent 12px);
+            background-size: 60px 60px;
+            pointer-events: none;
+        }
+        
+        .container {
+            max-width: 700px;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .main-card {
+            background: rgba(255, 255, 255, 0.97);
+            border-radius: 40px 40px 30px 30px;
+            padding: 40px 30px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+            border: 3px solid #b8860b;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .main-card::before {
+            content: "﷽";
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 30px;
+            color: rgba(184, 134, 11, 0.15);
+            font-family: 'Traditional Arabic', serif;
+        }
+        
+        .main-card::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 10px;
+            background: linear-gradient(90deg, #b8860b, #ffd700, #b8860b);
+        }
+        
+        .camera-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #b8860b, #8b6913);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 4px solid white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .camera-icon span {
+            font-size: 50px;
+            filter: drop-shadow(2px 4px 4px rgba(0,0,0,0.3));
+        }
+        
+        h1 {
+            font-size: 48px;
+            color: #1a2f1a;
+            margin-bottom: 10px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(184,134,11,0.3);
+        }
+        
+        .subtitle {
+            font-size: 20px;
+            color: #b8860b;
+            margin-bottom: 30px;
+            font-style: italic;
+            border-bottom: 2px dashed #b8860b;
+            padding-bottom: 15px;
+            display: inline-block;
+        }
+        
+        .verse-box {
+            background: #f9f5e9;
+            padding: 30px 20px;
+            border-radius: 30px;
+            margin: 30px 0;
+            border: 2px solid #b8860b;
+            position: relative;
+        }
+        
+        .arabic-verse {
+            font-size: 28px;
+            font-family: 'Traditional Arabic', 'Scheherazade', serif;
+            color: #1a2f1a;
+            line-height: 2;
+            margin-bottom: 15px;
+            direction: rtl;
+        }
+        
+        .verse-meaning {
+            font-size: 18px;
+            color: #4a4a4a;
+            font-style: italic;
+            border-top: 1px solid #b8860b;
+            padding-top: 15px;
+        }
+        
+        .verse-reference {
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #b8860b;
+            color: white;
+            padding: 5px 20px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+        
+        .channel-link-section {
+            background: linear-gradient(135deg, #1a2f1a, #2d4a2d);
+            border-radius: 80px;
+            padding: 25px;
+            margin: 40px 0 20px;
+        }
+        
+        .channel-link-label {
+            color: #ffd700;
+            font-size: 18px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .channel-link {
+            background: white;
+            padding: 20px 30px;
+            border-radius: 60px;
+            font-size: 32px;
+            font-weight: bold;
+            color: #1a2f1a;
+            text-decoration: none;
+            display: inline-block;
+            border: 3px solid #b8860b;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .channel-link:hover {
+            transform: scale(1.05);
+            background: #ffd700;
+            color: #1a2f1a;
+            border-color: white;
+        }
+        
+        .channel-link i {
+            margin-right: 10px;
+            color: #0088cc;
+        }
+        
+        .copy-link {
+            margin-top: 15px;
+            font-size: 18px;
+            color: #ffd700;
+        }
+        
+        .copy-link code {
+            background: rgba(255,255,255,0.2);
+            padding: 8px 20px;
+            border-radius: 40px;
+            color: white;
+            font-size: 20px;
+        }
+        
+        .heart-line {
+            margin: 30px 0 10px;
+            color: #b8860b;
+            font-size: 24px;
+        }
+        
+        .heart-line i {
+            margin: 0 10px;
+            color: #ff4444;
+        }
+        
+        .footer {
+            color: rgba(255,255,255,0.7);
+            margin-top: 20px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="main-card">
+            
+            <!-- Kamera İkonu (Kalbin Sesi) -->
+            <div class="camera-icon">
+                <span>📹❤️</span>
+            </div>
+            
+            <!-- Kanal İsmi -->
+            <h1>KALBİN SESİ</h1>
+            <div class="subtitle">"Gönüllerin Buluşma Noktası"</div>
+            
+            <!-- Ayet -->
+            <div class="verse-box">
+                <div class="arabic-verse">
+                    يَا أَيَّتُهَا النَّفْسُ الْمُطْمَئِنَّةُ<br>
+                    ارْجِعِي إِلَىٰ رَبِّكِ رَاضِيَةً مَّرْضِيَّةً
+                </div>
+                <div class="verse-meaning">
+                    "Ey huzura kavuşmuş nefis!<br>
+                    Sen O'ndan razı, O da senden razı olarak Rabbine dön."
+                </div>
+                <div class="verse-reference">Fecr Suresi 27-28</div>
+            </div>
+            
+            <!-- Dini Söz -->
+            <div class="heart-line">
+                <i>❤️</i> Kalbin sesi, Rahman'a giden yoldur <i>❤️</i>
+            </div>
+            
+            <!-- Telegram Kanal Linki (Çok Belirgin) -->
+            <div class="channel-link-section">
+                <div class="channel-link-label">
+                    <i>📢</i> TELEGRAM KANALI <i>📢</i>
+                </div>
+                
+                <a href="https://t.me/kalbinsesi1" class="channel-link" target="_blank">
+                    <i>✈️</i> t.me/kalbinsesi1
+                </a>
+                
+                <div class="copy-link">
+                    <code>@kalbinsesi1</code>
+                </div>
+            </div>
+            
+            <!-- Manevi Hatırlatma -->
+            <div style="color: #666; font-style: italic; margin-top: 20px;">
+                "Her gün bir ayet, her gün bir dua..."
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <span>✿ Kalbin Sesi - İman dolu paylaşımlar ✿</span>
+        </div>
+    </div>
+</body>
+</html>
