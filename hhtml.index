@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İslami Sayfam</title>
+    <style>
+        /* Dini tema için özel stiller - Yeşil ağırlıklı, huzurlu renkler */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1a472a, #2d5a3a);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+        }
+        
+        /* İslami desen efekti - hafif saydam desen */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.1"><path d="M50,5 L95,50 L50,95 L5,50 Z" fill="none" stroke="%23ffd700" stroke-width="1"/><circle cx="50" cy="50" r="30" fill="none" stroke="%23ffd700" stroke-width="1"/></svg>');
+            background-size: 100px 100px;
+            pointer-events: none;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 1;
+            border: 2px solid #ffd700;
+            backdrop-filter: blur(5px);
+        }
+        
+        /* İslami geometrik desenli header */
+        .islamic-pattern {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #ffd700;
+            position: relative;
+        }
+        
+        .islamic-pattern::before,
+        .islamic-pattern::after {
+            content: "☪";
+            font-size: 24px;
+            color: #ffd700;
+            margin: 0 15px;
+        }
+        
+        h1 {
+            color: #1a472a;
+            font-size: 36px;
+            margin: 15px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            font-weight: bold;
+            display: inline-block;
+        }
+        
+        /* Dini sözler için kart */
+        .dua-box {
+            background: linear-gradient(145deg, #f0f7e6, #e8f0da);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            border-right: 8px solid #ffd700;
+            border-left: 8px solid #1a472a;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .ayet-text {
+            font-size: 28px;
+            line-height: 1.6;
+            color: #1a472a;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 15px;
+            font-family: 'Traditional Arabic', 'Times New Roman', serif;
+        }
+        
+        .meal-text {
+            font-size: 20px;
+            color: #2d5a3a;
+            text-align: center;
+            font-style: italic;
+            margin: 15px 0;
+            padding: 0 20px;
+        }
+        
+        .sure-bilgi {
+            text-align: center;
+            color: #8b6912;
+            font-weight: bold;
+            font-size: 18px;
+            margin-top: 15px;
+            background: rgba(255, 215, 0, 0.2);
+            display: inline-block;
+            padding: 8px 25px;
+            border-radius: 30px;
+            margin-left: auto;
+            margin-right: auto;
+            width: fit-content;
+        }
+        
+        /* İslami sözler bölümü */
+        .sozler {
+            background: #fff;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            border: 2px dashed #ffd700;
+        }
+        
+        .hadis {
+            font-size: 22px;
+            color: #1a472a;
+            text-align: center;
+            margin: 20px 0;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 10px;
+        }
+        
+        /* Kanal butonu - özel tasarım */
+        .telegram-button {
+            display: flex;
+            justify-content: center;
+            margin: 40px 0 20px;
+        }
+        
+        .btn-telegram {
+            background: linear-gradient(145deg, #0088cc, #0077b5);
+            color: white;
+            padding: 20px 50px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-size: 28px;
+            font-weight: bold;
+            border: 3px solid #ffd700;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-telegram:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+            background: linear-gradient(145deg, #0077b5, #0066a0);
+        }
+        
+        .btn-telegram::before {
+            content: "📿";
+            font-size: 32px;
+        }
+        
+        .btn-telegram::after {
+            content: "🤲";
+            font-size: 32px;
+        }
+        
+        /* Telegram logosu için özel simge */
+        .telegram-icon {
+            font-size: 40px;
+            margin: 0 10px;
+        }
+        
+        /* Tarih ve dua bölümü */
+        .footer-islamic {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #1a472a, #2d5a3a);
+            border-radius: 15px;
+            color: #ffd700;
+        }
+        
+        .salah-times {
+            font-size: 18px;
+            margin: 10px 0;
+            color: #fff;
+        }
+        
+        /* Hareketli ışık efekti */
+        .light-effect {
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,215,0,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+            z-index: 0;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Ayet numarası için */
+        .ayet-no {
+            font-size: 14px;
+            color: #8b6912;
+            margin-top: 5px;
+        }
+        
+        /* Besmele */
+        .besmele {
+            font-size: 32px;
+            color: #1a472a;
+            text-align: center;
+            margin: 20px 0;
+            font-weight: bold;
+            font-family: 'Traditional Arabic', serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="light-effect"></div>
+    
+    <div class="container">
+        <!-- İslami Başlık -->
+        <div class="islamic-pattern">
+            <h1>İslami Sayfam</h1>
+        </div>
+        
+        <!-- Besmele -->
+        <div class="besmele">
+            بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+        </div>
+        
+        <!-- Ayet Kartı -->
+        <div class="dua-box">
+            <div class="ayet-text">
+                "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ"
+            </div>
+            <div class="meal-text">
+                "Rabbimiz! Bize dünyada da iyilik ver, ahirette de iyilik ver ve bizi cehennem azabından koru."
+            </div>
+            <div class="sure-bilgi">
+                Bakara Suresi, 201. Ayet
+            </div>
+        </div>
+        
+        <!-- Dini Sözler Bölümü -->
+        <div class="sozler">
+            <div class="hadis">
+                🌙 "Komşusu açken tok yatan bizden değildir." 
+                <div style="font-size: 16px; color: #8b6912; margin-top: 10px;">- Hazreti Muhammed (sav)</div>
+            </div>
+            
+            <div class="hadis">
+                ☪️ "İlim öğrenmek kadın erkek her Müslümana farzdır."
+                <div style="font-size: 16px; color: #8b6912; margin-top: 10px;">- Hadis-i Şerif</div>
+            </div>
+            
+            <div class="hadis">
+                🤲 "Allah'ım! Faydasız ilimden sana sığınırım."
+                <div style="font-size: 16px; color: #8b6912; margin-top: 10px;">- Hazreti Muhammed (sav)</div>
+            </div>
+        </div>
+        
+        <!-- İkinci Ayet -->
+        <div class="dua-box" style="background: linear-gradient(145deg, #e8f0da, #d8e8ca);">
+            <div class="ayet-text">
+                "إِنَّ اللَّهَ مَعَ الصَّابِرِينَ"
+            </div>
+            <div class="meal-text">
+                "Şüphesiz Allah sabredenlerle beraberdir."
+            </div>
+            <div class="sure-bilgi">
+                Bakara Suresi, 153. Ayet
+            </div>
+        </div>
+        
+        <!-- Kanal Katılma Butonu (TELEGRAM) -->
+        <div class="telegram-button">
+            <a href="https://t.me/kalbinsesi1" target="_blank" class="btn-telegram">
+                <span class="telegram-icon">📲</span>
+                Kanalıma Katıl
+                <span class="telegram-icon">💚</span>
+            </a>
+        </div>
+        
+        <!-- Buton altı bilgi -->
+        <div style="text-align: center; color: #666; margin: 10px 0;">
+            🌸 Dini sohbetler, ayetler ve hadisler için katılın 🌸
+        </div>
+        
+        <!-- Alt Bilgi - İslami Tasarım -->
+        <div class="footer-islamic">
+            <div style="font-size: 24px; margin-bottom: 10px;">☪</div>
+            <div>Rabbi yessir ve lâ tuassir, Rabbi temmim bi'l hayr</div>
+            <div style="font-size: 14px; margin-top: 15px; color: #fff;">
+                (Rabbim! Kolaylaştır, zorlaştırma. Rabbim hayırla sonuçlandır.)
+            </div>
+            <div class="salah-times">
+                🕌 15 Mart 2026 - 25 Şaban 1447 🕌
+            </div>
+        </div>
+    </div>
+    
+    <!-- Sayfa kenarlarına dekoratif süsler -->
+    <div style="position: fixed; bottom: 10px; left: 10px; font-size: 20px; opacity: 0.5;">☪</div>
+    <div style="position: fixed; top: 10px; right: 10px; font-size: 20px; opacity: 0.5;">🤲</div>
+    <div style="position: fixed; top: 10px; left: 10px; font-size: 20px; opacity: 0.5;">🕋</div>
+    <div style="position: fixed; bottom: 10px; right: 10px; font-size: 20px; opacity: 0.5;">📿</div>
+</body>
+</html>
